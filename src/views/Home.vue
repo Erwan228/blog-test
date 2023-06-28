@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    
+    <PostList/>
   </div>
 </template>
 
 <script>
+import PostList from '@/components/PostList.vue'
 import { ref } from 'vue'
 
 export default {
