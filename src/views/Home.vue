@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList/>
+    <PostList :posts="posts"/>
   </div>
 </template>
 
@@ -11,6 +11,9 @@ import { ref } from 'vue'
 
 export default {
   name: 'Home',
+  components: {
+    PostList
+  },
   setup() {
     const posts = ref([
       { title: 'welcome to the blog', body: 'Lorem ipsum', id: 1 },
