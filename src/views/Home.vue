@@ -17,10 +17,24 @@ export default {
     PostList
   },
   setup() {
-    const posts = ref([
-      { title: 'welcome to the blog', body: 'Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum', id: 1 },
-      { title: 'top 5 CSS tips', body: 'Lorem ipsum', id: 2 }
-    ])
+    const posts = ref([])
+    const error = ref(null)
+
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/post')
+        if (!data.ok) {
+          throw Error('no data available')
+        }
+      }
+      catch (err) {
+        error.value = err.message
+        console.log(error.value)
+      }
+    }
+
+    load()
+
     const showPosts = ref(true)
 
     return { 
