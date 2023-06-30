@@ -12,17 +12,20 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import PostList from '@/components/PostList.vue'
-
+import getPosts from '../composables/getPosts'
 export default {
   name: 'Home',
   components: {
     PostList
   },
   setup() {
-    
+    const {posts, error, load} = getPosts()
 
     const showPosts = ref(true)
+
+    load()
 
     return { 
       posts,

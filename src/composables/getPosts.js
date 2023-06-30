@@ -23,3 +23,5 @@ const getPosts = () => {
         load,
     }
 }
+
+export default getPosts
